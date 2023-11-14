@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: backend-drf
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    ports:
+      - '8000:8000'
+    volumes:
+      - /backend:/backend
+    environment:
+      - DB_HOST=postgres_db
+      - DB_NAME=shop_db
+      - DB_USER=shop_user
+      - DB_PASSWORD=root
+    command: ["sh", "./start.sh"]
+    depends_on:
+      - postgres_db
+
+  postgres_db:
+    image: postgres:16.0-alpine3.18
+    container_name: postgres_db
+    environment:
+      - POSTGRES_DB=shop_db
+      - POSTGRES_USER=shop_user
+      - POSTGRES_PASSWORD=root
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+#  pgadmin:
+#    container_name: pgadmin
+#    image: dpage/pgadmin4
+#    environment:
+#      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+#      PGADMIN_DEFAULT_PASSWORD: admin
+#    ports:
+#      - '5050:80'
+
+volumes:
+  postgres_data:
