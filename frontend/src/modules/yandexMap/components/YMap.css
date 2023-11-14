@@ -1,0 +1,19 @@
+.mapRoot {
+  position: relative;
+  width: 1200px;
+  height: 1200px;
+}
+
+.placemark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  z-index: 1200;
+  font-size: 35px !important;
+  cursor: grab;
+}
+
+[class*='copyrights-pane'] {
+  display: none !important;
+}
