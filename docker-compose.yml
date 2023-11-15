@@ -13,8 +13,8 @@ services:
     environment:
       - DB_HOST=postgres_db
       - DB_NAME=shop_db
-      - DB_USER=shop_user
-      - DB_PASSWORD=root
+      - DB_USER=admin
+      - DB_PASSWORD=admin
     command: ["sh", "./start.sh"]
     depends_on:
       - postgres_db
@@ -24,10 +24,11 @@ services:
     container_name: postgres_db
     environment:
       - POSTGRES_DB=shop_db
-      - POSTGRES_USER=shop_user
-      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
     ports:
       - '5432:5432'
 
