@@ -5,7 +5,7 @@ LABEL authors="Veng0rd"
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 
-WORKDIR .
+WORKDIR /app
 
 #RUN apk add postgresql-client build-base postgresql-dev
 
