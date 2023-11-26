@@ -4,7 +4,7 @@ from .models import Category, Subcategory, Group, Product
 
 @admin.register(Product)
 class ProductsAdmin(admin.ModelAdmin):
-    fields = ['title', 'description', 'price', 'group', 'nutritional_info', 'volume_or_weight', 'composition',
+    fields = ['title', 'description', 'price', 'group', 'small_image', 'large_image', 'nutritional_info', 'volume_or_weight', 'composition',
               'storage_conditions', 'storage_period', 'manufacturer']
     list_display = ['id', 'title', 'description', 'price']
 
@@ -23,5 +23,5 @@ class SubcategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    fields = ['title', 'slug']
+    fields = ['title', 'slug', 'image']
     list_display = ['title', 'slug']
