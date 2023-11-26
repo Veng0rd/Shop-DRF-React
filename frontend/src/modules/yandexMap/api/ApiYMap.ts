@@ -11,3 +11,10 @@ export const requestAddress = async (coords: number[]): Promise<string> => {
   const data: ResponseData = await response.json()
   return data.response.GeoObjectCollection.featureMember[0].GeoObject.name
 }
+
+export const test = async () => {
+  const response = await fetch('http://localhost:8000/api/v1/category/')
+
+  const data = await response.json()
+  console.log(data)
+}
