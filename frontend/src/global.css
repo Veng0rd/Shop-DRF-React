@@ -150,3 +150,7 @@ button {
   margin: 0;
   cursor: pointer;
 }
+
+body {
+  background-color: #e6e6e6;
+}

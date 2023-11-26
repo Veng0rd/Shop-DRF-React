@@ -6,14 +6,17 @@ import {
   RouterProvider,
   Route,
 } from 'react-router-dom'
-import Root from './pages/Root'
+import Root from './pages/rootPage/Root'
 import ErrorPage from './pages/ErrorPage'
 
 import './global.css'
+import SearchProduct from './ui/searchProduct/SearchProduct'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Root />} errorElement={<ErrorPage />}></Route>,
+    <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
+      <Route index element={<SearchProduct />} />
+    </Route>,
   ),
 )
 

@@ -1,0 +1,12 @@
+.contentContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+}
+
+.main {
+  width: 100%;
+  max-width: 1144px;
+}
