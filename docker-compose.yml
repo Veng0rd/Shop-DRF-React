@@ -15,7 +15,13 @@ services:
       - DB_NAME=shop_db
       - DB_USER=admin
       - DB_PASSWORD=admin
-    command: ["sh", "./start.sh"]
+    command:
+      - sh
+      - -c
+      - |
+        python manage.py makemigrations
+        python manage.py migrate
+        python manage.py runserver 0.0.0.0:8000
     depends_on:
       - postgres_db
 
