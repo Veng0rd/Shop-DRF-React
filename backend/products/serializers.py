@@ -40,3 +40,11 @@ class SubcategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Subcategory
         fields = ('title', 'groups')
+
+
+class ProductsDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ['title', 'description', 'feature', 'price', 'discount', 'group', 'large_image', 'calories',
+                  'proteins', 'fats', 'carbohydrates', 'volume_or_weight', 'composition', 'storage_period',
+                  'storage_conditions', 'manufacturer']
