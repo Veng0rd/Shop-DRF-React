@@ -48,3 +48,11 @@ class ProductsDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         exclude = ('small_image',)
+
+
+class ProductsSearchSerializer(serializers.ModelSerializer):
+    group = serializers.StringRelatedField()
+
+    class Meta:
+        model = Product
+        fields = ('id', 'group', 'title', 'feature', 'small_image', 'price', 'discount')

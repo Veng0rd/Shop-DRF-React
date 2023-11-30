@@ -1,7 +1,7 @@
 from rest_framework import generics, viewsets, filters
 
 from .models import Category, Product, Subcategory
-from .serializers import CategorySerializer, SubcategorySerializer, ProductsDetailSerializer
+from .serializers import CategorySerializer, SubcategorySerializer, ProductsDetailSerializer, ProductsSearchSerializer
 
 
 class CategoryList(generics.ListAPIView):
@@ -15,9 +15,13 @@ class SubcategoryList(generics.RetrieveAPIView):
     lookup_field = 'slug'
 
 
-class ProductsDetailList(viewsets.ReadOnlyModelViewSet):
+class ProductsList(viewsets.ReadOnlyModelViewSet):
     queryset = Product.objects.all()
-    serializer_class = ProductsDetailSerializer
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     ordering_fields = '__all__'
     search_fields = ['title']
+
+    def get_serializer_class(self):
+        if 'search' in self.request.query_params:
+            return ProductsSearchSerializer
+        return ProductsDetailSerializer
