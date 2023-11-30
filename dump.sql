@@ -471,7 +471,7 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 --
 
 COPY public.auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
-1	pbkdf2_sha256$600000$m6SOOBxGYU8PuMpepYw0Fx$6F5v5LWJz824M7xC9o4w5mtXmwuvlpy5aldljHsY1HY=	2023-11-27 14:45:15.636684+00	t	admin			admin@admin.com	t	t	2023-11-15 15:04:08.323197+00
+1	pbkdf2_sha256$600000$m6SOOBxGYU8PuMpepYw0Fx$6F5v5LWJz824M7xC9o4w5mtXmwuvlpy5aldljHsY1HY=	2023-11-30 17:16:28.948865+00	t	admin			admin@admin.com	t	t	2023-11-15 15:04:08.323197+00
 \.
 
 
@@ -496,11 +496,11 @@ COPY public.auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
 --
 
 COPY public.category (id, title, image) FROM stdin;
-2	Хлеб и выпечка	img/category/default.jpg
-3	Овощи и фрукты	img/category/default.jpg
-4	Мясо и рыба	img/category/default.jpg
-5	Сладкое	img/category/default.jpg
 1	Молоко, яйца и сыр	img/category/9ecb524e05b2b4b3.jpg
+2	Хлеб и выпечка	img/category/160441_349334568.jpg
+3	Овощи и фрукты	img/category/1694187180-pic1.jpg
+4	Мясо и рыба	img/category/b6db88b1e3657695.jpg
+5	Сладкое	img/category/186dd558-e7ec-4309-a576-abc39bc18202.jpg
 \.
 
 
@@ -566,6 +566,22 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 55	2023-11-28 21:53:36.032013+00	8	Фрукты и ягоды	2	[{"changed": {"fields": ["Slug \\u043f\\u043e\\u0434\\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u0438"]}}]	7	1
 56	2023-11-28 21:53:40.604764+00	7	Овощи, грибы и зелень	2	[{"changed": {"fields": ["Slug \\u043f\\u043e\\u0434\\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u0438"]}}]	7	1
 57	2023-11-28 21:53:56.792567+00	12	Мороженное	2	[{"changed": {"fields": ["Slug \\u043f\\u043e\\u0434\\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u0438"]}}]	7	1
+58	2023-11-30 18:35:37.687033+00	2	Хлеб и выпечка	2	[{"changed": {"fields": ["\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u0438"]}}]	10	1
+59	2023-11-30 18:35:59.898068+00	4	Хлеб	2	[{"changed": {"fields": ["\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u043f\\u043e\\u0434\\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u0438"]}}]	7	1
+60	2023-11-30 18:36:28.323927+00	5	Выпечка	2	[{"changed": {"fields": ["\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u043f\\u043e\\u0434\\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u0438"]}}]	7	1
+61	2023-11-30 18:37:03.225408+00	6	Хлебцы, сухари и сушки	2	[{"changed": {"fields": ["\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u043f\\u043e\\u0434\\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u0438"]}}]	7	1
+62	2023-11-30 18:37:12.793474+00	6	Хлебцы, сухари и сушки	2	[]	7	1
+63	2023-11-30 18:37:45.324996+00	3	Овощи и фрукты	2	[{"changed": {"fields": ["\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u0438"]}}]	10	1
+64	2023-11-30 18:38:22.774606+00	7	Овощи, грибы и зелень	2	[{"changed": {"fields": ["\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u043f\\u043e\\u0434\\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u0438"]}}]	7	1
+65	2023-11-30 18:38:55.290946+00	8	Фрукты и ягоды	2	[{"changed": {"fields": ["\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u043f\\u043e\\u0434\\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u0438"]}}]	7	1
+66	2023-11-30 18:39:34.085862+00	4	Мясо и рыба	2	[{"changed": {"fields": ["\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u0438"]}}]	10	1
+67	2023-11-30 18:39:48.565838+00	9	Мясо и птица	2	[{"changed": {"fields": ["\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u043f\\u043e\\u0434\\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u0438"]}}]	7	1
+68	2023-11-30 18:42:00.29196+00	10	Колбаса и сосиски	2	[{"changed": {"fields": ["\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u043f\\u043e\\u0434\\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u0438"]}}]	7	1
+69	2023-11-30 18:42:22.880411+00	11	Рыба и дары моря	2	[{"changed": {"fields": ["\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u043f\\u043e\\u0434\\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u0438"]}}]	7	1
+70	2023-11-30 18:42:46.156331+00	12	Мороженное	2	[{"changed": {"fields": ["\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u043f\\u043e\\u0434\\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u0438"]}}]	7	1
+71	2023-11-30 18:42:57.070858+00	5	Сладкое	2	[{"changed": {"fields": ["\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u0438"]}}]	10	1
+72	2023-11-30 18:43:30.120196+00	2	Йогурты и десерты	2	[{"changed": {"fields": ["\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u043f\\u043e\\u0434\\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u0438"]}}]	7	1
+73	2023-11-30 18:43:44.317704+00	3	Сыр	2	[{"changed": {"fields": ["\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u043f\\u043e\\u0434\\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u0438"]}}]	7	1
 \.
 
 
@@ -626,6 +642,7 @@ COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
 y7gmucel3g1yhkdyri63voufskqjrrlc	.eJxVjEEOwiAQAP_C2RBwwYJH776BLLtbqRqalPZk_LuS9KDXmcm8VMJtLWlrsqSJ1VlZdfhlGekhtQu-Y73Nmua6LlPWPdG7bfo6szwve_s3KNhK3xq2JmRAQYwkGUZGazxlz855CM4TigjYAb4FUzwaZ04xjhB4iCzq_QEFgjiy:1r3HRL:ZdVG8BeU8TPc7GrJdebCAnVV8a0JD3AZyj2IFekWXQQ	2023-11-29 15:04:27.16983+00
 2pqxpeexspndeamfggsal6kqxe8xqxjx	.eJxVjEEOwiAQAP_C2RBwwYJH776BLLtbqRqalPZk_LuS9KDXmcm8VMJtLWlrsqSJ1VlZdfhlGekhtQu-Y73Nmua6LlPWPdG7bfo6szwve_s3KNhK3xq2JmRAQYwkGUZGazxlz855CM4TigjYAb4FUzwaZ04xjhB4iCzq_QEFgjiy:1r3L1e:At2CCFRf92IQ8-hmIMFvGM32PoLIbxYqvl8C2KianDU	2023-11-29 18:54:10.746734+00
 2mw5j664wvutgqm3ftjdwtyia5643sor	.eJxVjEEOwiAQAP_C2RBwwYJH776BLLtbqRqalPZk_LuS9KDXmcm8VMJtLWlrsqSJ1VlZdfhlGekhtQu-Y73Nmua6LlPWPdG7bfo6szwve_s3KNhK3xq2JmRAQYwkGUZGazxlz855CM4TigjYAb4FUzwaZ04xjhB4iCzq_QEFgjiy:1r7crL:PazU89xRC-dObGs7Q5iRQH1_H9F2hHqce6v4JFbr6HI	2023-12-11 14:45:15.641192+00
+8u9a51o191ugfqrn0ow4mpswxu3vxq0w	.eJxVjEEOwiAQAP_C2RBwwYJH776BLLtbqRqalPZk_LuS9KDXmcm8VMJtLWlrsqSJ1VlZdfhlGekhtQu-Y73Nmua6LlPWPdG7bfo6szwve_s3KNhK3xq2JmRAQYwkGUZGazxlz855CM4TigjYAb4FUzwaZ04xjhB4iCzq_QEFgjiy:1r8keK:hykVYXYzq4sBE-RDLaxhTv53-09cWJYnHNQurNbc7b8	2023-12-14 17:16:28.95469+00
 \.
 
 
@@ -662,18 +679,18 @@ ed82b639-d8e2-4f39-b24c-85bb35b5fdf2	Яйцо куриное Иртышское 
 --
 
 COPY public.subcategory (id, title, slug, category_id, image) FROM stdin;
-2	Йогурты и десерты	moloko-yajca-i-syr-jogurty-i-deserty	1	img/subcategory/default.jpg
 1	Молочное и яйца	moloko-yajca-i-syr-molochnoe-i-yajca	1	img/subcategory/9ecb524e05b2b4b3.jpg
-3	Сыр	moloko-yajca-i-syr-syr	1	img/subcategory/default.jpg
-4	Хлеб	hleb-i-vypechka-hleb	2	img/subcategory/default.jpg
-6	Хлебцы, сухари и сушки	hleb-i-vypechka-hlebcy-suhari-i-sushki	2	img/subcategory/default.jpg
-5	Выпечка	hleb-i-vypechka-vypechka	2	img/subcategory/default.jpg
-10	Колбаса и сосиски	myaso-i-ryba-kolbasa-i-sosiski	4	img/subcategory/default.jpg
-9	Мясо и птица	myaso-i-ryba-myaso-i-ptica	4	img/subcategory/default.jpg
-11	Рыба и дары моря	myaso-i-ryba-ryba-i-dary-morya	4	img/subcategory/default.jpg
-8	Фрукты и ягоды	ovoschi-i-frukty-frukty-i-yagody	3	img/subcategory/default.jpg
-7	Овощи, грибы и зелень	ovoschi-i-frukty-ovoschi-i-zelen	3	img/subcategory/default.jpg
-12	Мороженное	sladkoe-morozhenoe	5	img/subcategory/default.jpg
+4	Хлеб	hleb-i-vypechka-hleb	2	img/subcategory/160441_349334568.jpg
+5	Выпечка	hleb-i-vypechka-vypechka	2	img/subcategory/ed8763ad592bce71_7d92e1304038b46c_147189_1231272202.jpg
+6	Хлебцы, сухари и сушки	hleb-i-vypechka-hlebcy-suhari-i-sushki	2	img/subcategory/b35f7b4230f91b12.jpg
+7	Овощи, грибы и зелень	ovoschi-i-frukty-ovoschi-i-zelen	3	img/subcategory/1694187180-pic1.jpg
+8	Фрукты и ягоды	ovoschi-i-frukty-frukty-i-yagody	3	img/subcategory/1694187261-pic2.jpg
+9	Мясо и птица	myaso-i-ryba-myaso-i-ptica	4	img/subcategory/b6db88b1e3657695.jpg
+10	Колбаса и сосиски	myaso-i-ryba-kolbasa-i-sosiski	4	img/subcategory/109541_1818297172.jpg
+11	Рыба и дары моря	myaso-i-ryba-ryba-i-dary-morya	4	img/subcategory/124606_321691658.jpg
+12	Мороженное	sladkoe-morozhenoe	5	img/subcategory/186dd558-e7ec-4309-a576-abc39bc18202.jpg
+2	Йогурты и десерты	moloko-yajca-i-syr-jogurty-i-deserty	1	img/subcategory/6601667b5e7e41d4_img_0115.jpg
+3	Сыр	moloko-yajca-i-syr-syr	1	img/subcategory/95545_1281878146.jpg
 \.
 
 
@@ -737,7 +754,7 @@ SELECT pg_catalog.setval('public.category_id_seq', 5, true);
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public.django_admin_log_id_seq', 57, true);
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 73, true);
 
 
 --

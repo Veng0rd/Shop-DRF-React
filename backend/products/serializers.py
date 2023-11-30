@@ -43,8 +43,8 @@ class SubcategorySerializer(serializers.ModelSerializer):
 
 
 class ProductsDetailSerializer(serializers.ModelSerializer):
+    group = serializers.StringRelatedField()
+
     class Meta:
         model = Product
-        fields = ['title', 'description', 'feature', 'price', 'discount', 'group', 'large_image', 'calories',
-                  'proteins', 'fats', 'carbohydrates', 'volume_or_weight', 'composition', 'storage_period',
-                  'storage_conditions', 'manufacturer']
+        exclude = ('small_image',)

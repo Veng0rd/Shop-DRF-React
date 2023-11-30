@@ -1,5 +1,4 @@
-from django.shortcuts import render, get_object_or_404
-from rest_framework import generics
+from rest_framework import generics, viewsets, filters
 
 from .models import Category, Product, Subcategory
 from .serializers import CategorySerializer, SubcategorySerializer, ProductsDetailSerializer
@@ -16,6 +15,9 @@ class SubcategoryList(generics.RetrieveAPIView):
     lookup_field = 'slug'
 
 
-class ProductsDetailList(generics.RetrieveAPIView):
+class ProductsDetailList(viewsets.ReadOnlyModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductsDetailSerializer
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+    ordering_fields = '__all__'
+    search_fields = ['title']
