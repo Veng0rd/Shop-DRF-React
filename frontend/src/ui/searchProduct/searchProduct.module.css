@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   max-width: 1144px;
+  margin-bottom: 24px;
 }
 
 .searchInput {

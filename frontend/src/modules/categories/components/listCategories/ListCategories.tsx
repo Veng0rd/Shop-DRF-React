@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { requestCategories } from '../api/categoriesApi'
-import { CategoriesData } from '../types/interfaceApi'
+import { requestCategories } from '../../api/categoriesApi'
+import { CategoriesData } from '../../types/interfaceApi'
 import styles from './listCategories.module.css'
 
 const ListCategories = () => {
   const [state, setState] = useState<CategoriesData[]>([])
-  const [isCategoryVisible, setIsCategoryVisible] = useState(false)
+  const [isCategoryVisible, setIsCategoryVisible] = useState<Record<string, boolean>>({})
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,22 +20,23 @@ const ListCategories = () => {
     fetchData()
   }, [])
 
-  const toggleCategoryVisibility = () => {
-    setIsCategoryVisible(prev => !prev)
+  const toggleCategoryVisibility = (id: string) => {
+    setIsCategoryVisible(prev => ({ ...prev, [id]: !prev[id] }))
   }
 
-  console.log(state)
   return (
     <div className={styles.container}>
-      {state.map((category, i) => (
+      {state.map(category => (
         <>
           <div
-            onClick={toggleCategoryVisibility}
+            onClick={() => toggleCategoryVisibility(category.slug)}
             className={styles.category}
-            key={i}>
+            key={category.slug}>
             <div className={styles.categoryIcon}>
               <div
-                style={{ opacity: `${isCategoryVisible ? '1' : '0'}` }}
+                style={{
+                  opacity: `${isCategoryVisible[category.slug] ? '1' : '0'}`,
+                }}
                 className={styles.icon}>
                 <svg
                   width="16"
@@ -47,25 +48,27 @@ const ListCategories = () => {
                     opacity="0.8"
                     d="M4 7L8 11L12 7"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"></path>
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"></path>
                 </svg>
               </div>
               <div
                 className={styles.categoryImage}
                 style={{
                   backgroundImage: `url(${category.image})`,
-                  opacity: `${isCategoryVisible ? '0' : '1'}`,
+                  opacity: `${isCategoryVisible[category.slug] ? '0' : '1'}`,
                 }}></div>
             </div>
             <span>{category.title}</span>
           </div>
           <div
-            style={{ display: `${isCategoryVisible ? 'flex' : 'none'}` }}
+            style={{
+              display: `${isCategoryVisible[category.slug] ? 'flex' : 'none'}`,
+            }}
             className={styles.subContainer}>
             {category.subcategories.map(sub => (
-              <a key={sub.slug} href="#">
+              <a key={sub.slug + '1'} href={`/category/${sub.slug}`}>
                 <span>{sub.title}</span>
               </a>
             ))}

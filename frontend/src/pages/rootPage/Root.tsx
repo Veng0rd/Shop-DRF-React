@@ -3,7 +3,8 @@ import { Outlet } from 'react-router-dom'
 import Logo from '../../ui/logo/Logo'
 import RegButton from '../../ui/regButton/RegButton'
 import styles from './root.module.css'
-import ListCategoryes from '../../modules/listCategories/components/ListCategories'
+import ListCategoryes from '../../modules/categories/components/listCategories/ListCategories'
+import SearchProduct from '../../ui/searchProduct/SearchProduct'
 
 const Root = () => {
   return (
@@ -17,6 +18,7 @@ const Root = () => {
           <ListCategoryes />
         </aside>
         <main className={styles.main}>
+          <SearchProduct />
           <Outlet />
         </main>
         <aside>
