@@ -1,0 +1,70 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-width: 240px;
+  gap: 8px;
+  padding: 16px;
+  overflow: auto;
+  overscroll-behavior-y: contain;
+  background: #fff;
+  border-radius: 20px;
+}
+
+.category {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 4px 0;
+  cursor: pointer;
+}
+
+.category span {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.1px;
+  color: #404040;
+}
+
+.categoryIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: #f2f2f2;
+  border-radius: 6px;
+}
+
+.icon {
+  position: absolute;
+  height: 16px;
+  color: #404040;
+  transform: rotate(180deg);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.categoryImage {
+  width: 32px;
+  height: 32px;
+  background-color: gray;
+  background-position: bottom;
+  background-size: cover;
+  border-radius: 6px;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.subContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 3px;
+  padding-bottom: 15px;
+}
+
+.subContainer a {
+  margin-left: 40px;
+  text-decoration: none;
+}

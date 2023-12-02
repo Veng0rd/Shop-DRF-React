@@ -1,9 +1,8 @@
 .contentContainer {
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 24px;
-  padding: 24px;
+  padding: 24px 24px 24px;
 }
 
 .main {
