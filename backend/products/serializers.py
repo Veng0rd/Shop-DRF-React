@@ -17,7 +17,7 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         ordering = ['title']
         model = Category
-        fields = ('title', 'image', 'subcategories')
+        fields = ('title', 'slug', 'image', 'subcategories')
 
 
 class ProductsPreviewSerializer(serializers.ModelSerializer):
