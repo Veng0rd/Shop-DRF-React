@@ -87,13 +87,6 @@ DATABASES = {
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
     }
-    # "default": {
-    #     "ENGINE": "django.db.backends.postgresql",
-    #     "USER": "admin",
-    #     "NAME": "shop_db",
-    #     "PASSWORD": "admin",
-    #     "HOST": "localhost",
-    # },
 }
 
 
