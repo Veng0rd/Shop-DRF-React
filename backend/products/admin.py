@@ -24,5 +24,5 @@ class SubcategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    fields = ['title', 'image']
-    list_display = ['title', 'image']
+    fields = ['title', 'slug', 'image']
+    list_display = ['title', 'slug', 'image']

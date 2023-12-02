@@ -5,6 +5,7 @@ from django.db import models
 
 class Category(models.Model):
     title = models.CharField(max_length=255, unique=True, null=False, blank=False, verbose_name='Название категории')
+    slug = models.CharField(max_length=255, unique=True, null=True, blank=True, verbose_name='Slug категории')
     image = models.ImageField(upload_to='img/category', default='img/category/default.jpg',
                               null=False, blank=True, verbose_name='Изображение категории')
 
