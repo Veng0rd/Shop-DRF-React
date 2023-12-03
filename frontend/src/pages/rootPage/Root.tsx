@@ -3,8 +3,9 @@ import { Outlet } from 'react-router-dom'
 import Logo from '../../ui/logo/Logo'
 import RegButton from '../../ui/regButton/RegButton'
 import styles from './root.module.css'
-import ListCategoryes from '../../modules/categories/components/listCategories/ListCategories'
-import SearchProduct from '../../ui/searchProduct/SearchProduct'
+import ListCategories from '../../modules/categories/components/listCategories/ListCategories'
+import SearchBar from '../../components/searchBar/SearchBar'
+import { useState } from 'react'
 
 const Root = () => {
   return (
@@ -15,10 +16,9 @@ const Root = () => {
       </header>
       <section className={styles.contentContainer}>
         <aside>
-          <ListCategoryes />
+          <ListCategories />
         </aside>
         <main className={styles.main}>
-          <SearchProduct />
           <Outlet />
         </main>
         <aside>

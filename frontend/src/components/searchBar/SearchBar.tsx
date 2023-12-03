@@ -1,9 +1,14 @@
-import styles from './searchProduct.module.css'
+import styles from './searchBar.module.css'
 
-const SearchProduct = () => {
+const SearchBar = ({ setSearchQuery }) => {
+  const handleInputChange = e => {
+    setSearchQuery(e.target.value)
+  }
+
   return (
     <div className={styles.searchContainer}>
       <input
+        onChange={handleInputChange}
         className={styles.searchInput}
         type="text"
         placeholder="Искать в ЭкоЛавке"
@@ -15,4 +20,4 @@ const SearchProduct = () => {
   )
 }
 
-export default SearchProduct
+export default SearchBar
