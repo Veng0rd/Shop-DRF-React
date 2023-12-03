@@ -4,7 +4,7 @@
   flex-direction: column;
   padding: 24px 24px 24px;
   background-color: #fff;
-  border-radius: 0 0 32px 32px;
+  border-radius: 32px;
   z-index: 2;
 }
 

@@ -1,8 +1,13 @@
 import React from 'react'
 import styles from './searchContent.module.css'
 
-const SearchContent = ({ product }) => {
-  console.log(product)
+import { Products } from '../../types/interfaceApi'
+
+type SearchContentProps = {
+  product: Products[]
+}
+
+const SearchContent: React.FC<SearchContentProps> = ({ product }) => {
   return (
     <div className={styles.container}>
       <div className={styles.productsPageContent}>

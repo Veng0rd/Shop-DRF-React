@@ -4,7 +4,7 @@
   flex-direction: column;
   padding: 24px 24px 24px;
   background-color: #fff;
-  border-radius: 0 0 32px 32px;
+  border-radius: 32px;
   z-index: 2;
 }
 
@@ -105,6 +105,16 @@
   width: 100%;
   cursor: pointer;
   transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  animation: fadeIn 0.7s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .cardImage {
