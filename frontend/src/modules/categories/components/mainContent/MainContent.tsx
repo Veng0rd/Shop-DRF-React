@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import styles from './mainContents.module.css'
+import { useEffect, useState } from 'react'
 import { requestCategories, requestProducts } from '../../api/categoriesApi'
 import { CategoriesData } from '../../types/interfaceApi'
 import SearchBar from '../../../../components/searchBar/SearchBar'
 import SearchContent from '../searchContent/SearchContent'
+import CardCategories from '../cardCategories/CardCategories'
 
 const MainContent = () => {
   const [state, setState] = useState<CategoriesData[]>([])
-  const [search, setSearch] = useState([])
+  const [searchResults, setSearchResults] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
-  console.log(searchQuery)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,11 +24,13 @@ const MainContent = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const result = await requestProducts(searchQuery)
-        setSearch(result)
-      } catch (error) {
-        console.error('Произошла ошибка:', error)
+      if (searchQuery.length === 3) {
+        try {
+          const result = await requestProducts(searchQuery)
+          setSearchResults(result)
+        } catch (error) {
+          console.error('Произошла ошибка:', error)
+        }
       }
     }
     fetchData()
@@ -37,44 +38,8 @@ const MainContent = () => {
 
   return (
     <>
-      <SearchBar setSearchQuery={setSearchQuery} />
-      {searchQuery !== '' ? (
-        <SearchContent product={search} />
-      ) : (
-        <div className={styles.container}>
-          <div className={styles.homePageContent}>
-            <div className={styles.homePageContent}>
-              {state.map(category => (
-                <div key={category.slug} className={styles.categoriesBlock}>
-                  <span className={styles.categoryTitle}>{category.title}</span>
-                  <div className={styles.categoriesGrid}>
-                    {category.subcategories.map(sub => (
-                      <a key={sub.slug} href={`/category/${sub.slug}`}>
-                        <div className={styles.categoryCard}>
-                          <div className={styles.cardImage}>
-                            <img
-                              style={{
-                                position: 'absolute',
-                                height: '100%',
-                                width: '100%',
-                                inset: '0px',
-                                color: 'transparent',
-                              }}
-                              src={sub.image}
-                              alt={sub.title}
-                            />
-                            <span className={styles.cardText}>{sub.title}</span>
-                          </div>
-                        </div>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
+      <SearchBar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
+      {searchQuery.length >= 3 ? <SearchContent product={searchResults} /> : <CardCategories data={state} />}
     </>
   )
 }

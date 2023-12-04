@@ -8,7 +8,7 @@ export interface CategoriesData extends Categories {
   subcategories: Categories[]
 }
 
-interface Products {
+export interface Products {
   id: string
   title: string
   feature: string

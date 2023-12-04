@@ -4,8 +4,6 @@ import Logo from '../../ui/logo/Logo'
 import RegButton from '../../ui/regButton/RegButton'
 import styles from './root.module.css'
 import ListCategories from '../../modules/categories/components/listCategories/ListCategories'
-import SearchBar from '../../components/searchBar/SearchBar'
-import { useState } from 'react'
 
 const Root = () => {
   return (
