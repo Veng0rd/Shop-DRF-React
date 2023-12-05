@@ -2,8 +2,9 @@ import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { Outlet } from 'react-router-dom'
 import Logo from '../../ui/logo/Logo'
 import RegButton from '../../ui/regButton/RegButton'
-import styles from './root.module.css'
-import ListCategories from '../../modules/categories/components/listCategories/ListCategories'
+import { ListCategories } from '../../modules/categories/index'
+
+import styles from './rootPage.module.css'
 
 const Root = () => {
   return (

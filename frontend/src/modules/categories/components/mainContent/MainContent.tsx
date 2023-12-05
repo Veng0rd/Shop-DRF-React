@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import { requestCategories, requestProducts } from '../../api/categoriesApi'
 import { CategoriesData } from '../../types/interfaceApi'
 import SearchBar from '../../../../components/searchBar/SearchBar'
-import SearchContent from '../searchContent/SearchContent'
-import CardCategories from '../cardCategories/CardCategories'
+import SearchContent from '../../../../components/searchContent/SearchContent'
+import CategoryCard from '../../../../components/categoryCard/CategoryCard'
 
-const MainContent = () => {
+export const MainContent = () => {
   const [state, setState] = useState<CategoriesData[]>([])
   const [searchResults, setSearchResults] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
@@ -39,9 +39,7 @@ const MainContent = () => {
   return (
     <>
       <SearchBar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
-      {searchQuery.length >= 3 ? <SearchContent product={searchResults} /> : <CardCategories data={state} />}
+      {searchQuery.length >= 3 ? <SearchContent product={searchResults} /> : <CategoryCard data={state} />}
     </>
   )
 }
-
-export default MainContent

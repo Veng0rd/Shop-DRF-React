@@ -1,7 +1,7 @@
 import React from 'react'
-import styles from './searchContent.module.css'
+import { Products } from '../../modules/categories/types/interfaceApi'
 
-import { Products } from '../../types/interfaceApi'
+import styles from './searchContent.module.css'
 
 type SearchContentProps = {
   product: Products[]

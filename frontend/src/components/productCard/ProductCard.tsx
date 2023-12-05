@@ -1,14 +1,15 @@
-import { ProductsData } from '../../types/interfaceApi'
-import { useNavigate } from 'react-router-dom'
+import { ProductsData } from '../../modules/categories/types/interfaceApi'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import styles from './cardProduct.module.css'
 
-type CardProductProps = {
+type ProductCardProps = {
   data: ProductsData | null | undefined
 }
 
-const CardProduct: React.FC<CardProductProps> = ({ data }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
   const navigate = useNavigate()
+  const location = useLocation()
 
   const redirectToPreviousRoute = () => {
     navigate(-1)
@@ -49,7 +50,7 @@ const CardProduct: React.FC<CardProductProps> = ({ data }) => {
               </div>
               <div className={styles.productList}>
                 {product.products.map(card => (
-                  <a href="#">
+                  <Link to={`/product/${card.id}`} state={{ previousLocation: location }}>
                     <div className={styles.productCard}>
                       <div className={styles.cardImage}>
                         <img src={card.small_image} alt={card.title} />
@@ -85,7 +86,7 @@ const CardProduct: React.FC<CardProductProps> = ({ data }) => {
                         </div>
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -96,4 +97,4 @@ const CardProduct: React.FC<CardProductProps> = ({ data }) => {
   )
 }
 
-export default CardProduct
+export default ProductCard

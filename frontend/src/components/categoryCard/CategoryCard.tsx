@@ -1,11 +1,12 @@
-import styles from './cardCategories.module.css'
-import { CategoriesData } from '../../types/interfaceApi'
+import { CategoriesData } from '../../modules/categories/types/interfaceApi'
 
-type CardCategoriesProps = {
+import styles from './cardCategories.module.css'
+
+type CategoryCardProps = {
   data: CategoriesData[]
 }
 
-const CardCategories: React.FC<CardCategoriesProps> = ({ data }) => {
+const CategoryCard: React.FC<CategoryCardProps> = ({ data }) => {
   return (
     <div className={styles.container}>
       <div className={styles.homePageContent}>
@@ -43,4 +44,4 @@ const CardCategories: React.FC<CardCategoriesProps> = ({ data }) => {
   )
 }
 
-export default CardCategories
+export default CategoryCard
