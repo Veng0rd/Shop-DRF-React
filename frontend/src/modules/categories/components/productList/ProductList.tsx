@@ -3,26 +3,26 @@ import { useLocation } from 'react-router-dom'
 import { requestCategoriesProducts, requestProducts } from '../../api/categoriesApi'
 import { ProductsData } from '../../types/interfaceApi'
 import SearchBar from '../../../../components/searchBar/SearchBar'
-import SearchContent from '../searchContent/SearchContent'
-import CardProduct from '../cardProduct/CardProduct'
+import SearchContent from '../../../../components/searchContent/SearchContent'
+import ProductCard from '../../../../components/productCard/ProductCard'
 
-const Products = () => {
+export const ProductList = () => {
   const [state, setState] = useState<ProductsData | null>()
   const [search, setSearch] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
-  const product = useLocation().pathname
+  const product = useLocation()
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await requestCategoriesProducts(product)
+        const result = await requestCategoriesProducts(product.pathname)
         setState(result)
       } catch (error) {
         console.error('Произошла ошибка:', error)
       }
     }
     fetchData()
-  }, [product])
+  }, [])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,9 +41,7 @@ const Products = () => {
   return (
     <>
       <SearchBar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
-      {searchQuery.length >= 3 ? <SearchContent product={search} /> : <CardProduct data={state} />}
+      {searchQuery.length >= 3 ? <SearchContent product={search} /> : <ProductCard data={state} />}
     </>
   )
 }
-
-export default Products

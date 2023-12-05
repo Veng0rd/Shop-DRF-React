@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { requestCategories } from '../../api/categoriesApi'
 import { CategoriesData } from '../../types/interfaceApi'
+
 import styles from './listCategories.module.css'
 
-const ListCategories = () => {
+export const ListCategories = () => {
   const [state, setState] = useState<CategoriesData[]>([])
   const [isCategoryVisible, setIsCategoryVisible] = useState<Record<string, boolean>>({})
 
@@ -78,5 +79,3 @@ const ListCategories = () => {
     </div>
   )
 }
-
-export default ListCategories
