@@ -61,10 +61,10 @@ class Product(models.Model):
     discount = models.IntegerField(verbose_name='Процент скидки', null=False, blank=True, default=0)
 
     # other
-    calories = models.TextField(null=True, blank=True, verbose_name='Количество ккал')
-    proteins = models.TextField(null=True, blank=True, verbose_name='Количество белка')
-    fats = models.TextField(null=True, blank=True, verbose_name='Количество жиров')
-    carbohydrates = models.TextField(null=True, blank=True, verbose_name='Количество углеводов')
+    calories = models.TextField(null=True, blank=True, verbose_name='Ккал')
+    proteins = models.TextField(null=True, blank=True, verbose_name='Белки')
+    fats = models.TextField(null=True, blank=True, verbose_name='Жиры')
+    carbohydrates = models.TextField(null=True, blank=True, verbose_name='Углеводы')
     volume_or_weight = models.TextField(max_length=255, null=True, blank=True, verbose_name='Вес/объём')
     composition = models.TextField(null=True, blank=True, verbose_name='Состав')
     storage_period = models.TextField(null=True, blank=True, verbose_name='Срок хранения')
