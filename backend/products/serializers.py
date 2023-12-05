@@ -49,6 +49,34 @@ class ProductsDetailSerializer(serializers.ModelSerializer):
         model = Product
         exclude = ('small_image',)
 
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+
+        nutrition_info = [
+            {'name': field.verbose_name, 'gram': representation.get(field.name, None)} for field in Product._meta.fields
+            if field.name in ['calories', 'proteins', 'fats', 'carbohydrates']
+        ]
+
+        additional_info = [
+            {'name': field.verbose_name, 'info': representation.get(field.name, None)} for field in Product._meta.fields
+            if field.name in ['composition', 'storage_period', 'storage_conditions', 'manufacturer']
+        ]
+
+        new_representation = {
+            'title': representation['title'],
+            'group': representation['group'],
+            'volume_or_weight': representation['volume_or_weight'],
+            'large_image': representation['large_image'],
+            'feature': representation['feature'],
+            'price': representation['price'],
+            'discount': representation['discount'],
+            'description': representation['description'],
+            'in100grams': nutrition_info,
+            'info': additional_info,
+        }
+
+        return new_representation
+
 
 class ProductsSearchSerializer(serializers.ModelSerializer):
     group = serializers.StringRelatedField()
