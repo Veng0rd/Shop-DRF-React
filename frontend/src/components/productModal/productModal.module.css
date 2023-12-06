@@ -11,16 +11,44 @@
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
 
   visibility: visible;
-  transform: translateZ(0) !important;
+  /* transform: translateZ(0) !important; */
   opacity: 1 !important;
 
   z-index: 103;
   transition-duration: 500ms;
-  right: 0;
+  right: -700px;
   width: 978px;
   height: calc(100vh - 64px);
   bottom: 0;
   margin: 32px;
+
+  transition: transform 0.5s ease;
+}
+
+.visible {
+  animation: slideIn 0.5s ease-in-out forwards;
+}
+
+.hidden {
+  animation: slideOut 0.2s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-70%);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
 }
 
 .modalExit {

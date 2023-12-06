@@ -8,7 +8,7 @@ import CategoryCard from '../../../../components/categoryCard/CategoryCard'
 export const MainContent = () => {
   const [state, setState] = useState<CategoriesData[]>([])
   const [searchResults, setSearchResults] = useState([])
-  const [searchQuery, setSearchQuery] = useState('')
+  const [searchQuery, setSearchQuery] = useState<string>('')
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +24,7 @@ export const MainContent = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (searchQuery.length === 3) {
+      if (searchQuery.length >= 3) {
         try {
           const result = await requestProducts(searchQuery)
           setSearchResults(result)

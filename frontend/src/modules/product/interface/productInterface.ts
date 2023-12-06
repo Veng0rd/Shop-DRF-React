@@ -1,19 +1,22 @@
 export interface ProductData {
-  id: string
   group: string
+  in100grams: [
+    {
+      gram: string
+      name: string
+    },
+  ]
+  info: [
+    {
+      info: string
+      name: string
+    },
+  ]
   title: string
   feature: null
   description: string
   large_image: string
   price: string
   discount: number
-  calories: string
-  proteins: string
-  fats: string
-  carbohydrates: string
   volume_or_weight: string
-  composition: string
-  storage_period: string
-  storage_conditions: string
-  manufacturer: string
 }

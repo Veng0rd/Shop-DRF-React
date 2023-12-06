@@ -2,6 +2,7 @@ import { NavigateFunction } from 'react-router-dom'
 import { ProductData } from '../../modules/product/index'
 
 import styles from './productModal.module.css'
+import { useEffect, useRef, useState } from 'react'
 
 type ProductModalProps = {
   data: ProductData | undefined
@@ -9,12 +10,32 @@ type ProductModalProps = {
 }
 
 const ProductModal: React.FC<ProductModalProps> = ({ navigate, data }) => {
+  const [isVisibleText, setIsVisibleText] = useState(false)
+  const [modalVisible, setModalVisible] = useState(true)
+
+  const handleVisibleText = () => {
+    setIsVisibleText(prev => !prev)
+  }
+
+  const handleCloseModal = () => {
+    setModalVisible(prev => !prev)
+    setTimeout(() => navigate(-1), 300)
+  }
+
+  const blockRef = useRef(null)
+
+  useEffect(() => {
+    if (blockRef.current) {
+      blockRef.current.style.height = isVisibleText ? `${blockRef.current.scrollHeight}px` : '90px'
+    }
+  }, [isVisibleText])
+
   return (
     <>
-      <nav className={styles.modalContainer}>
+      <nav className={`${styles.modalContainer} ${modalVisible ? styles.visible : styles.hidden}`}>
         <div className={styles.modalExit}>
           <div className={styles.btnClose}>
-            <button onClick={() => navigate(-1)}>
+            <button onClick={handleCloseModal}>
               <span className={styles.btnContent}>
                 <span className={styles.contentCenter}>
                   <span></span>
@@ -56,45 +77,57 @@ const ProductModal: React.FC<ProductModalProps> = ({ navigate, data }) => {
                 <span>{data?.volume_or_weight}</span>
               </div>
               <div className={styles.contentNutritions}>
-                <span></span>
+                <span>В 100 граммах</span>
                 <div className={styles.nutritionsList}>
-                  <div className={styles.nutrition}>
-                    <span></span>
-                    <span></span>
-                  </div>
+                  {data?.in100grams.map(param => (
+                    <div className={styles.nutrition}>
+                      <span>{param.gram}</span>
+                      <span>{param.name}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
               <div className={styles.contentAttributes}>
-                <div className={styles.attribute}>
-                  <span></span>
-                  <span>
-                    <div className={styles.dropDownText}>
-                      <div>{data?.description}</div>
-                      <div className={styles.overlay}>
-                        <div className={styles.overlayExpander}>
-                          <div className={styles.expanderBtn}>
-                            <div className={styles.expanderBtnIcon}>
-                              <svg
-                                width="16"
-                                height="16"
-                                viewBox="0 0 16 16"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                  opacity="0.8"
-                                  d="M4 7L8 11L12 7"
-                                  stroke="currentColor"
-                                  strokeWidth="2"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"></path>
-                              </svg>
+                {data?.info.map((info, i) => (
+                  <div className={styles.attribute}>
+                    <span>{info.name}</span>
+                    <span>
+                      <div
+                        ref={i === 0 && info.info.length > 400 ? blockRef : null}
+                        style={{
+                          transition: 'height 0.5s ease',
+                          overflow: 'hidden',
+                        }}
+                        className={styles.dropDownText}>
+                        <div>{info.info}</div>
+                        {info.info.length > 400 && !isVisibleText && i === 0 && (
+                          <div className={styles.overlay}>
+                            <div className={styles.overlayExpander}>
+                              <div onClick={handleVisibleText} className={styles.expanderBtn}>
+                                <div className={styles.expanderBtnIcon}>
+                                  <svg
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 16 16"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                      opacity="0.8"
+                                      d="M4 7L8 11L12 7"
+                                      stroke="currentColor"
+                                      strokeWidth="2"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"></path>
+                                  </svg>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                        </div>
+                        )}
                       </div>
-                    </div>
-                  </span>
-                </div>
+                    </span>
+                  </div>
+                ))}
               </div>
               <div className={styles.drawerSpacer}></div>
               <div className={styles.contentBtn}>

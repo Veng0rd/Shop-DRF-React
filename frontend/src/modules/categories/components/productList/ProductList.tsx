@@ -9,7 +9,7 @@ import ProductCard from '../../../../components/productCard/ProductCard'
 export const ProductList = () => {
   const [state, setState] = useState<ProductsData | null>()
   const [search, setSearch] = useState([])
-  const [searchQuery, setSearchQuery] = useState('')
+  const [searchQuery, setSearchQuery] = useState<string>('')
   const product = useLocation()
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export const ProductList = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (searchQuery.length === 3) {
+      if (searchQuery.length >= 3) {
         try {
           const result = await requestProducts(searchQuery)
           setSearch(result)

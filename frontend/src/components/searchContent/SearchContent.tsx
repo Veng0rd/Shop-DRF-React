@@ -2,19 +2,22 @@ import React from 'react'
 import { Products } from '../../modules/categories/types/interfaceApi'
 
 import styles from './searchContent.module.css'
+import { Link, useLocation } from 'react-router-dom'
 
 type SearchContentProps = {
   product: Products[]
 }
 
 const SearchContent: React.FC<SearchContentProps> = ({ product }) => {
+  const location = useLocation()
+
   return (
     <div className={styles.container}>
       <div className={styles.productsPageContent}>
         <div className={styles.mainContent}>
           <div className={styles.productList}>
             {product.map(card => (
-              <a href="#">
+              <Link to={`/product/${card.id}`} state={{ previousLocation: location }}>
                 <div className={styles.productCard}>
                   <div className={styles.cardImage}>
                     <img src={card.small_image} alt={card.title} />
@@ -50,7 +53,7 @@ const SearchContent: React.FC<SearchContentProps> = ({ product }) => {
                     </div>
                   </div>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
