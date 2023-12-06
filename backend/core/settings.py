@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'drf_spectacular',
     'rest_framework',
     'corsheaders',
-    'products.apps.ProductsConfig'
+    'products.apps.ProductsConfig',
+    'accounts.apps.AccountsConfig'
 ]
 
 MIDDLEWARE = [
@@ -85,10 +86,10 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'HOST': os.environ.get('DB_HOST'),
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST') or 'localhost',
+        'NAME': os.environ.get('DB_NAME') or 'shop_db',
+        'USER': os.environ.get('DB_USER') or 'admin',
+        'PASSWORD': os.environ.get('DB_PASSWORD') or 'admin',
     }
 }
 
@@ -111,6 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'accounts.UserAccount'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
