@@ -3,12 +3,14 @@ import styles from './logo.module.css'
 
 const Logo = () => {
   return (
-    <Link to="/">
-      <div className={styles.logo}>
-        <img src="/images/logo.svg" alt="Лист" />
-        <h1>Лавка</h1>
-      </div>
-    </Link>
+    <>
+      <Link to="/" reloadDocument>
+        <div className={styles.logo}>
+          <img src="/images/logo.svg" alt="Лист" />
+          <h1>Лавка</h1>
+        </div>
+      </Link>
+    </>
   )
 }
 

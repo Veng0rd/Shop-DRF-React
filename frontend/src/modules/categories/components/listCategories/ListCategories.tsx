@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import { requestCategories } from '../../api/categoriesApi'
 import { CategoriesData } from '../../types/interfaceApi'
+import { useLocation } from 'react-router-dom'
 
 import styles from './listCategories.module.css'
 
 export const ListCategories = () => {
+  const location = useLocation()
   const [state, setState] = useState<CategoriesData[]>([])
   const [isCategoryVisible, setIsCategoryVisible] = useState<Record<string, boolean>>({})
 
@@ -20,6 +22,14 @@ export const ListCategories = () => {
 
     fetchData()
   }, [])
+
+  useEffect(() => {
+    state.map(card => {
+      if (location.pathname.indexOf(card.slug) !== -1) {
+        setIsCategoryVisible(prev => ({ ...prev, [card.slug]: true }))
+      }
+    })
+  }, [state])
 
   const toggleCategoryVisibility = (id: string) => {
     setIsCategoryVisible(prev => ({ ...prev, [id]: !prev[id] }))

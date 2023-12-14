@@ -19,6 +19,7 @@
 }
 
 .category span {
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 18px;
@@ -67,4 +68,11 @@
 .subContainer a {
   margin-left: 40px;
   text-decoration: none;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.1px;
+  color: #595959;
 }

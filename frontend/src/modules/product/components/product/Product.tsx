@@ -9,6 +9,7 @@ export const Product = () => {
   const productId = useLocation().pathname
   const navigate = useNavigate()
   const [isLoaded, setIsLoaded] = useState(false)
+
   useEffect(() => {
     const fetchData = async () => {
       try {

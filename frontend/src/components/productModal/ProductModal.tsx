@@ -76,6 +76,13 @@ const ProductModal: React.FC<ProductModalProps> = ({ navigate, data }) => {
                 <h1>{data?.title}</h1>
                 <span>{data?.volume_or_weight}</span>
               </div>
+              {data?.description.length != 0 && (
+                <div className={styles.contentDescr}>
+                  <span>
+                    <div>{data?.description}</div>
+                  </span>
+                </div>
+              )}
               <div className={styles.contentNutritions}>
                 <span>В 100 граммах</span>
                 <div className={styles.nutritionsList}>
@@ -93,14 +100,14 @@ const ProductModal: React.FC<ProductModalProps> = ({ navigate, data }) => {
                     <span>{info.name}</span>
                     <span>
                       <div
-                        ref={i === 0 && info.info.length > 400 ? blockRef : null}
+                        ref={i === 0 && info.info.length > 300 ? blockRef : null}
                         style={{
                           transition: 'height 0.5s ease',
                           overflow: 'hidden',
                         }}
                         className={styles.dropDownText}>
                         <div>{info.info}</div>
-                        {info.info.length > 400 && !isVisibleText && i === 0 && (
+                        {info.info.length > 300 && !isVisibleText && i === 0 && (
                           <div className={styles.overlay}>
                             <div className={styles.overlayExpander}>
                               <div onClick={handleVisibleText} className={styles.expanderBtn}>
