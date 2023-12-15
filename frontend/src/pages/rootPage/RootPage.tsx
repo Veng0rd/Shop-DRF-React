@@ -1,15 +1,17 @@
 import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { Outlet } from 'react-router-dom'
 import Logo from '../../ui/logo/Logo'
-import RegButton from '../../ui/regButton/RegButton'
 import { ListCategories } from '../../modules/categories/index'
 
 import styles from './rootPage.module.css'
-import { YMap } from '../../modules/yandexMap'
-import SideBarMap from '../../components/sideBarMap/SideBarMap'
+import { SideBarMap } from '../../modules/yandexMap/index'
 import { Auth } from '../../modules/auth'
 
+import { BasketMain } from '../../modules/basket'
+import { BasketProvider } from '../../hooks/useBusket'
+
 const Root = () => {
+  console.log('mainRender')
   return (
     <HelmetProvider>
       <Helmet>
@@ -31,7 +33,7 @@ const Root = () => {
         <aside className={styles.asideRight}>
           <div className={styles.sideBarRight}>
             <Auth />
-            <SideBarMap />
+            {localStorage.getItem('address') ? <BasketMain /> : <SideBarMap />}
           </div>
         </aside>
       </section>

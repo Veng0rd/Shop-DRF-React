@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import styles from './sideBarMap.module.css'
-import { YMap } from '../../modules/yandexMap'
+import { YMap } from '../yMap/YMap'
 import AddressModal from '../addressModal/AddressModal'
 
-const SideBarMap = () => {
+export const SideBarMap = () => {
+  const [isCloseAddressModal, setIsCloseAddressModal] = useState(false)
+
+  const handleModal = () => {
+    setIsCloseAddressModal(prev => !prev)
+  }
+
   return (
     <div className={styles.EmptyAddressPlug__wrapper}>
       <div className={styles.EmptyAddressPlug_badgeWrapper}>
@@ -19,7 +25,7 @@ const SideBarMap = () => {
           </div>
           <div className={styles.AddressConfirmBadge_buttons}>
             <div>
-              <button className={styles.btnGreen}>
+              <button onClick={handleModal} className={styles.btnGreen}>
                 <span>
                   <span>
                     <span>Да, Верно</span>
@@ -28,7 +34,7 @@ const SideBarMap = () => {
               </button>
             </div>
             <div>
-              <button className={styles.btnTransparent}>
+              <button onClick={handleModal} className={styles.btnTransparent}>
                 <span>
                   <span>
                     <span>Нет, другой</span>
@@ -45,9 +51,7 @@ const SideBarMap = () => {
           <div className={styles.hidden} />
         </div>
       </div>
-      {/* <AddressModal /> */}
+      {isCloseAddressModal && <AddressModal handleModal={handleModal} />}
     </div>
   )
 }
-
-export default SideBarMap

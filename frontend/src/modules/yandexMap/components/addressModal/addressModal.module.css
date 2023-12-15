@@ -11,7 +11,7 @@
   transform: translateZ(0) !important;
   opacity: 1 !important;
   margin: 32px;
-  height: 900px;
+  height: calc(100vh - 40px);
   width: 978px;
   z-index: 1202;
   transition-duration: 500ms;
@@ -122,7 +122,20 @@
   gap: 24px;
 }
 
-.AddressCreation_info span {
+.AddressCreation_info::before {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: block;
+  height: 158px;
+  pointer-events: none;
+  content: '';
+  background: linear-gradient(180deg, hsla(0, 0%, 100%, 0) 0, var(--color-white) 87.24%);
+}
+
+.AddressCreation_text {
   margin-top: 20px;
   font-size: 20px;
   font-weight: 700;
@@ -151,7 +164,7 @@
 
 .textInputContainer span {
   position: absolute;
-  top: -40px;
+  top: -16px;
   left: 0;
   display: none;
   color: #a6a6a6;
@@ -201,4 +214,48 @@
   opacity: 0;
   transform: translateY(-50%);
   height: 16px;
+}
+
+.AddressCreation_button {
+  position: absolute;
+  bottom: 12px;
+  z-index: 10;
+  width: 100%;
+}
+
+.AddressCreation_button__control {
+  color: #fff;
+  background: #00b207;
+  height: 56px;
+  padding: 0 24px;
+  border-radius: 56px;
+  max-width: 100% !important;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+  font-family: Inter, sans-serif;
+}
+
+.AddressCreation_button__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.AddressCreation_button__center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.AddressCreation_button__text {
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  letter-spacing: -0.05px;
+  color: inherit;
 }

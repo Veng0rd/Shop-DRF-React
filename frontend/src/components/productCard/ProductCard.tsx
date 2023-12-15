@@ -2,29 +2,25 @@ import { ProductsData } from '../../modules/categories/types/interfaceApi'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import styles from './cardProduct.module.css'
+import { useBasket } from '../../hooks/useBusket'
 
 type ProductCardProps = {
   data: ProductsData | null | undefined
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
+  const { basket, setBasket } = useBasket()
+
   const navigate = useNavigate()
   const location = useLocation()
-
   const redirectToPreviousRoute = () => {
     navigate(-1)
   }
 
-  const r = (e, obj) => {
+  const handleAddProductToBasket = (e, obj) => {
     e.preventDefault()
 
-    const existingData = localStorage.getItem('foodBasket')
-
-    const existingArray = existingData ? JSON.parse(existingData) : []
-
-    existingArray.push(obj)
-
-    localStorage.setItem('foodBasket', JSON.stringify(existingArray))
+    setBasket(prev => [...prev, obj])
   }
 
   return (
@@ -75,7 +71,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
                         </div>
                         <div className={styles.cardActions}>
                           <div
-                            onClick={e => r(e, { title: card.title, price: card.price })}
+                            onClick={e =>
+                              handleAddProductToBasket(e, {
+                                title: card.title,
+                                price: card.price,
+                                small_image: card.small_image,
+                              })
+                            }
                             className={styles.actionsContainer}>
                             <div className={styles.actionsText}>
                               <span>{card.price}&nbsp;₽</span>

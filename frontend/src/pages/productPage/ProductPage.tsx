@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Product } from '../../modules/product/index'
 
 import styles from './productPage.module.css'
+import { BasketProvider } from '../../hooks/useBusket'
 
 const ProductPage = () => {
   useEffect(() => {
@@ -14,11 +15,13 @@ const ProductPage = () => {
     }
   }, [])
   return (
-    <div className="modalDiv">
-      <div className="modal">
-        <Product />
+    <>
+      <div className="modalDiv">
+        <div className="modal">
+          <Product />
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

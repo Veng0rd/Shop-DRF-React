@@ -1,0 +1,122 @@
+.productItem_root {
+  position: relative;
+  display: flex;
+  padding: 12px 0 11px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.productItem_root .icon {
+  position: absolute;
+  top: 12px;
+  right: 0;
+  color: #a6a6a6;
+  cursor: pointer;
+  height: 16px;
+}
+
+.productImage {
+  position: relative;
+  flex-shrink: 0;
+  width: 83px;
+  height: 83px;
+  overflow: hidden;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+}
+
+.productImage img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  inset: 0px;
+  color: transparent;
+}
+
+.productItem_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 6px;
+}
+
+.productItem_name {
+  display: -webkit-box;
+  padding-right: 56px;
+  margin-bottom: -1px;
+  overflow: hidden;
+  color: #595959;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: 0.02px;
+}
+
+.productItem_weight {
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: 0.02px;
+  color: rgb(166, 166, 166);
+}
+
+.productItem_footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.productItemActions_root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 76px;
+  height: 30px;
+  padding: 7px 8px;
+  cursor: default;
+  user-select: none;
+  background-color: #f2f2f2;
+  border-radius: 36px;
+}
+
+.productItemActions_root span {
+  font-family: Inter, sans-serif;
+  color: #404040;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.1px;
+}
+
+.productItemActions_action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.productItemActions_action > .icon {
+  position: relative;
+  height: 16px;
+  top: 0;
+}
+
+.productItemPrice_root {
+  color: #404040;
+}
+
+.productItemPrice_root span:first-child {
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  letter-spacing: -0.05px;
+  color: rgb(64, 64, 64);
+}

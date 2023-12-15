@@ -2,13 +2,13 @@ import React from 'react'
 
 import styles from './authModal.module.css'
 
-export const AuthModal = () => {
+export const AuthModal = ({ handleOpenModal, handleOpenReg, handleOpenLogin }) => {
   return (
     <div className="drawers">
       <nav className={styles.modal}>
         <div className={styles.modalExit}>
           <div className={styles.btnClose}>
-            <button>
+            <button onClick={handleOpenModal}>
               <span className={styles.btnContent}>
                 <span className={styles.contentCenter}>
                   <span></span>
@@ -31,7 +31,7 @@ export const AuthModal = () => {
         </div>
         <div className={styles.LoginForm_root}>
           <div>
-            <button className={styles.btnAuth}>
+            <button onClick={handleOpenLogin} className={styles.btnAuth}>
               <span className={styles.btnAuth__content}>
                 <span className={styles.btnAuth__center}>
                   <span>Войти по электронной почте</span>
@@ -40,7 +40,7 @@ export const AuthModal = () => {
             </button>
           </div>
           <div>
-            <button className={styles.btnAuth}>
+            <button onClick={handleOpenReg} className={styles.btnAuth}>
               <span className={styles.btnAuth__content}>
                 <span className={styles.btnAuth__center}>
                   <span>Создать аккаунт</span>

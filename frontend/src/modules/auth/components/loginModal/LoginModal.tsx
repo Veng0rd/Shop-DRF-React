@@ -1,26 +1,35 @@
 import React, { useState } from 'react'
-import { SubmitCreateUser } from '../../api/authApi'
+import { createJwtToken } from '../../api/authApi'
 
-import styles from './regModal.module.css'
+import styles from './loginModal.module.css'
 
-type TRegModal = {
-  handleOpenReg: () => void
+type TLoginModalProps = {
+  handleOpenLogin: () => void
   handleClickCloseAllModal: () => void
+  setName: (name: string) => void
 }
 
-export const RegModal: React.FC<TRegModal> = ({ handleOpenReg, handleClickCloseAllModal }) => {
-  const [inputsValue, setInputsValue] = useState({ first_name: '', email: '', password: '' })
-  const [isUserCreate, setIsUserCreate] = useState(false)
+export const LoginModal: React.FC<TLoginModalProps> = ({
+  handleOpenLogin,
+  handleClickCloseAllModal,
+  setName,
+}) => {
+  const [userData, setUserData] = useState({ email: '', password: '' })
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const typeInput = e.target.id
+  const handleLoginUser = async (e: React.MouseEvent) => {
+    e.preventDefault()
 
-    setInputsValue(prev => ({ ...prev, [typeInput]: e.target.value }))
+    const name: string = await createJwtToken(userData)
+    if (name !== undefined) {
+      console.log(name)
+      await setName(name)
+      handleClickCloseAllModal()
+    }
   }
 
-  const handleSubmitUser = async (e: React.MouseEvent) => {
-    e.preventDefault()
-    await SubmitCreateUser(inputsValue, setIsUserCreate)
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const id = e.target.id
+    setUserData(prev => ({ ...prev, [id]: e.target.value }))
   }
 
   return (
@@ -31,7 +40,7 @@ export const RegModal: React.FC<TRegModal> = ({ handleOpenReg, handleClickCloseA
             <div className={styles.NavBar_navbar}>
               <div className={styles.NavBar_back}>
                 <div className={styles.NavigationButton_root}>
-                  <button onClick={handleOpenReg} className={styles.navBtn}>
+                  <button onClick={handleOpenLogin} className={styles.navBtn}>
                     <span className={styles.navBtn__content}>
                       <span className={styles.navBtn__center}>
                         <span></span>
@@ -81,51 +90,37 @@ export const RegModal: React.FC<TRegModal> = ({ handleOpenReg, handleClickCloseA
           </div>
         </div>
         <div className={styles.modalHeader}>
-          <h1>Создание аккаунта</h1>
+          <h1>Войти в аккаунт</h1>
         </div>
-        <form className={styles.RegForm_root}>
+        <form className={styles.loginForm_root}>
           <div className={styles.formFieldCentered}>
-            <label>
-              <span className={styles.Form__text}>Name</span>
-              <input
-                className={styles.Form__input}
-                onChange={e => handleInputChange(e)}
-                id="first_name"
-                type="text"
-                placeholder="Name"
-                value={inputsValue.first_name}
-              />
-            </label>
             <label>
               <span className={styles.Form__text}>Email</span>
               <input
                 className={styles.Form__input}
-                onChange={e => handleInputChange(e)}
                 id="email"
                 type="text"
                 placeholder="Email"
-                value={inputsValue.email}
+                value={userData.email}
+                onChange={e => handleChangeInput(e)}
               />
             </label>
             <label>
               <span className={styles.Form__text}>Password</span>
               <input
                 className={styles.Form__input}
-                onChange={e => handleInputChange(e)}
                 id="password"
                 type="text"
                 placeholder="Password"
-                value={inputsValue.password}
+                value={userData.password}
+                onChange={e => handleChangeInput(e)}
               />
             </label>
-            <div className={inputsValue.password.length != 0 ? '' : styles.btnReg__notActive}>
-              <button
-                onClick={e => handleSubmitUser(e)}
-                className={styles.btnReg}
-                disabled={inputsValue.password.length != 0 ? false : true}>
-                <span className={styles.btnReg__content}>
-                  <span className={styles.btnReg__center}>
-                    <span>Зарегистрироваться</span>
+            <div>
+              <button onClick={e => handleLoginUser(e)} className={styles.btnLogin}>
+                <span className={styles.btnLogin__content}>
+                  <span className={styles.btnLogin__center}>
+                    <span>Войти</span>
                   </span>
                 </span>
               </button>

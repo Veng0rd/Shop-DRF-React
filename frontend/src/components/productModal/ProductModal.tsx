@@ -3,15 +3,21 @@ import { ProductData } from '../../modules/product/index'
 
 import styles from './productModal.module.css'
 import { useEffect, useRef, useState } from 'react'
+import { useBasket } from '../../hooks/useBusket'
 
 type ProductModalProps = {
   data: ProductData | undefined
   navigate: NavigateFunction
 }
 
+type HTMLDivElementWithHeight = HTMLDivElement & {
+  scrollHeight: number
+}
+
 const ProductModal: React.FC<ProductModalProps> = ({ navigate, data }) => {
   const [isVisibleText, setIsVisibleText] = useState(false)
   const [modalVisible, setModalVisible] = useState(true)
+  const { setBasket } = useBasket()
 
   const handleVisibleText = () => {
     setIsVisibleText(prev => !prev)
@@ -22,7 +28,14 @@ const ProductModal: React.FC<ProductModalProps> = ({ navigate, data }) => {
     setTimeout(() => navigate(-1), 300)
   }
 
-  const blockRef = useRef(null)
+  const handleAddProductToBasket = (e, obj) => {
+    console.log(obj)
+    e.preventDefault()
+
+    setBasket(prev => [...prev, obj])
+  }
+
+  const blockRef = useRef<HTMLDivElementWithHeight>(null)
 
   useEffect(() => {
     if (blockRef.current) {
@@ -138,7 +151,15 @@ const ProductModal: React.FC<ProductModalProps> = ({ navigate, data }) => {
               </div>
               <div className={styles.drawerSpacer}></div>
               <div className={styles.contentBtn}>
-                <div className={styles.priceBtn}>
+                <div
+                  onClick={e =>
+                    handleAddProductToBasket(e, {
+                      title: data?.title,
+                      price: data?.price,
+                      small_image: data?.large_image,
+                    })
+                  }
+                  className={styles.priceBtn}>
                   <div className={styles.priceBtn__text}>
                     <span>
                       <span>{data?.price}&nbsp;₽</span>

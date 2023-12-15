@@ -3,6 +3,7 @@ import { Products } from '../../modules/categories/types/interfaceApi'
 
 import styles from './searchContent.module.css'
 import { Link, useLocation } from 'react-router-dom'
+import { useBasket } from '../../hooks/useBusket'
 
 type SearchContentProps = {
   product: Products[]
@@ -10,6 +11,13 @@ type SearchContentProps = {
 
 const SearchContent: React.FC<SearchContentProps> = ({ product }) => {
   const location = useLocation()
+  const { setBasket } = useBasket()
+
+  const handleAddProductToBasket = (e, obj) => {
+    e.preventDefault()
+
+    setBasket(prev => [...prev, obj])
+  }
 
   return (
     <div className={styles.container}>
@@ -29,7 +37,15 @@ const SearchContent: React.FC<SearchContentProps> = ({ product }) => {
                       </div>
                     </div>
                     <div className={styles.cardActions}>
-                      <div className={styles.actionsContainer}>
+                      <div
+                        onClick={e =>
+                          handleAddProductToBasket(e, {
+                            title: card.title,
+                            price: card.price,
+                            small_image: card.small_image,
+                          })
+                        }
+                        className={styles.actionsContainer}>
                         <div className={styles.actionsText}>
                           <span>{card.price}&nbsp;₽</span>
                         </div>
