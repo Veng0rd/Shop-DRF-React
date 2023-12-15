@@ -82,6 +82,11 @@
   width: 36px;
   height: 36px;
   padding: 0 4px;
+  transition: background 0.2s ease-in-out;
+}
+
+.btnClose button:hover {
+  background: hsla(0, 0%, 85%, 1);
 }
 
 .btnContent {
@@ -224,6 +229,19 @@
   line-height: 28px;
   letter-spacing: -0.4px;
   color: rgb(166, 166, 166);
+}
+
+.contentDescr {
+  padding: 16px 0;
+  border-top: 1px solid #f2f2f2;
+}
+
+.contentDescr span {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.1px;
+  color: rgb(89, 89, 89);
 }
 
 .contentNutritions {
@@ -377,11 +395,15 @@
   height: 56px;
   padding: 0;
   color: #fff;
-  background-color: #ff335f;
+  background-color: #00b207;
   cursor: pointer;
   user-select: none;
   border-radius: 40px;
   transition: background-color 0.15s ease-in, color 0.15s ease-in;
+}
+
+.priceBtn:hover {
+  background-color: #0aa811;
 }
 
 .priceBtn__text {

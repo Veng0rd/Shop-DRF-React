@@ -1,0 +1,226 @@
+.modal {
+  position: fixed;
+  background: #fff;
+  transition: all;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+  transform: translateZ(0) !important;
+  opacity: 1 !important;
+  z-index: 1300;
+  transition-duration: 300ms;
+  right: 0px;
+  width: 483px;
+  height: calc(100vh - 64px);
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 64px);
+  margin: 32px;
+  overflow: hidden;
+  border-radius: 32px;
+  transform: translate3d(100%, 0px, 0px);
+}
+
+.modalHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 55px;
+}
+
+.modalHeader h1 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: -0.1px;
+  font-family: Inter, sans-serif;
+}
+
+.NavBar_root {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  background: var(--color-white);
+  transition: background-color 0.15s ease-in-out;
+}
+
+.NavBar_navbar {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 36px;
+  margin: 24px 24px 16px;
+}
+
+.NavBar_back {
+  position: absolute;
+  left: 0;
+}
+
+.NavigationButton_root {
+  display: inline-flex;
+}
+
+.navBtn {
+  position: relative;
+  overflow: hidden;
+  color: #404040;
+  cursor: pointer;
+  background: #f2f2f2;
+  border: none;
+  width: fit-content;
+  height: 36px;
+  border-radius: 40px;
+  padding: 0 14px;
+}
+
+.navBtn__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navBtn__center {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navBtn__center span {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.1px;
+  color: inherit;
+  font-family: Inter, sans-serif;
+}
+
+.navBtn__icon {
+  position: relative;
+  color: #404040;
+  height: 24px;
+}
+
+.NavBar_right {
+  position: absolute;
+  right: 0;
+}
+
+.navBtn__right {
+  width: 36px;
+}
+
+.loginForm_root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0.6;
+}
+
+.formFieldCentered {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  gap: 32px;
+  justify-content: center;
+  text-align: center;
+}
+
+.Form__text {
+  display: block;
+  text-align: center;
+
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.1px;
+  color: rgb(166, 166, 166);
+}
+
+.Form__input {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  caret-color: #ff335f;
+  color: #404040;
+  border: none;
+  outline: transparent;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: -0.6px;
+  font-family: Inter, sans-serif;
+}
+
+.btnLogin {
+  position: relative;
+  width: 100%;
+  padding: 0 24px;
+  overflow: hidden;
+  color: #404040;
+  cursor: pointer;
+  background: #18e00a;
+  border: none;
+  max-width: 304px;
+  height: 56px;
+  border-radius: 56px;
+}
+
+.btnLogin__notActive {
+  opacity: 0.6;
+}
+
+.btnLogin__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnLogin__center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.btnLogin__center span {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  letter-spacing: -0.05px;
+  color: inherit;
+  font-family: Inter, sans-serif;
+}
+
+.LoginWizardOverlay_bottomLayout {
+  position: absolute;
+  right: 40px;
+  bottom: 48px;
+  left: 40px;
+}
+
+.LoginWizardOverlay_agreement span {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.1px;
+  font-family: Inter, sans-serif;
+  color: rgb(166, 166, 166);
+}
+
+.overlay {
+  display: block;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  opacity: 0.8;
+  background-color: #000000;
+  z-index: 102;
+}

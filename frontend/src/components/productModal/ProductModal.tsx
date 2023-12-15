@@ -3,15 +3,21 @@ import { ProductData } from '../../modules/product/index'
 
 import styles from './productModal.module.css'
 import { useEffect, useRef, useState } from 'react'
+import { useBasket } from '../../hooks/useBusket'
 
 type ProductModalProps = {
   data: ProductData | undefined
   navigate: NavigateFunction
 }
 
+type HTMLDivElementWithHeight = HTMLDivElement & {
+  scrollHeight: number
+}
+
 const ProductModal: React.FC<ProductModalProps> = ({ navigate, data }) => {
   const [isVisibleText, setIsVisibleText] = useState(false)
   const [modalVisible, setModalVisible] = useState(true)
+  const { setBasket } = useBasket()
 
   const handleVisibleText = () => {
     setIsVisibleText(prev => !prev)
@@ -22,7 +28,14 @@ const ProductModal: React.FC<ProductModalProps> = ({ navigate, data }) => {
     setTimeout(() => navigate(-1), 300)
   }
 
-  const blockRef = useRef(null)
+  const handleAddProductToBasket = (e, obj) => {
+    console.log(obj)
+    e.preventDefault()
+
+    setBasket(prev => [...prev, obj])
+  }
+
+  const blockRef = useRef<HTMLDivElementWithHeight>(null)
 
   useEffect(() => {
     if (blockRef.current) {
@@ -76,6 +89,13 @@ const ProductModal: React.FC<ProductModalProps> = ({ navigate, data }) => {
                 <h1>{data?.title}</h1>
                 <span>{data?.volume_or_weight}</span>
               </div>
+              {data?.description.length != 0 && (
+                <div className={styles.contentDescr}>
+                  <span>
+                    <div>{data?.description}</div>
+                  </span>
+                </div>
+              )}
               <div className={styles.contentNutritions}>
                 <span>В 100 граммах</span>
                 <div className={styles.nutritionsList}>
@@ -93,14 +113,14 @@ const ProductModal: React.FC<ProductModalProps> = ({ navigate, data }) => {
                     <span>{info.name}</span>
                     <span>
                       <div
-                        ref={i === 0 && info.info.length > 400 ? blockRef : null}
+                        ref={i === 0 && info.info.length > 300 ? blockRef : null}
                         style={{
                           transition: 'height 0.5s ease',
                           overflow: 'hidden',
                         }}
                         className={styles.dropDownText}>
                         <div>{info.info}</div>
-                        {info.info.length > 400 && !isVisibleText && i === 0 && (
+                        {info.info.length > 300 && !isVisibleText && i === 0 && (
                           <div className={styles.overlay}>
                             <div className={styles.overlayExpander}>
                               <div onClick={handleVisibleText} className={styles.expanderBtn}>
@@ -131,7 +151,15 @@ const ProductModal: React.FC<ProductModalProps> = ({ navigate, data }) => {
               </div>
               <div className={styles.drawerSpacer}></div>
               <div className={styles.contentBtn}>
-                <div className={styles.priceBtn}>
+                <div
+                  onClick={e =>
+                    handleAddProductToBasket(e, {
+                      title: data?.title,
+                      price: data?.price,
+                      small_image: data?.large_image,
+                    })
+                  }
+                  className={styles.priceBtn}>
                   <div className={styles.priceBtn__text}>
                     <span>
                       <span>{data?.price}&nbsp;₽</span>

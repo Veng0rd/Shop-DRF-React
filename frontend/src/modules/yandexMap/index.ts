@@ -1,2 +1,1 @@
-export { YMap } from './components/YMap.tsx'
-export { test } from './api/ApiYMap.ts'
+export { SideBarMap } from './components/sideBarMap/SideBarMap'

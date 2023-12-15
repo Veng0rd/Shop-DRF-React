@@ -1,6 +1,6 @@
 export const initialState = {
   title: '',
-  center: [55.003992, 73.303729],
+  center: [55.755864, 37.617698],
   zoom: 12,
 }
 
