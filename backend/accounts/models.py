@@ -30,7 +30,6 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=255, null=True, default='Пользователь')
     last_name = models.CharField(max_length=255, null=True, blank=True, default=None)
     address = models.CharField(max_length=255, null=True, blank=True)
-    cart = models.ManyToManyField(Product, related_name='cart')
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 

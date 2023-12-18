@@ -15,6 +15,7 @@ urlpatterns = [
     path(r'auth/', include('djoser.urls.jwt')),
     path(r'auth/', include('djoser.urls')),
     path('', include('products.urls')),
+    path('', include('cart.urls')),
 ]
 
 if settings.DEBUG:
