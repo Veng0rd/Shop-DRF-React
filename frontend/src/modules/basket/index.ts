@@ -1,1 +1,1 @@
-export { BasketMain } from './components/basketMain/basketMain'
+export { BasketMain } from './components/basketMain/BasketMain'
