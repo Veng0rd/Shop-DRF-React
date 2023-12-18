@@ -8,11 +8,21 @@ type TBasketProductProps = {
   title: string
   img: string
   index: number
+  quantity: number
 }
 
-export const BasketProduct: React.FC<TBasketProductProps> = ({ price, title, img, index }) => {
-  const { removeFromBasketByIndex } = useBasket()
+export const BasketProduct: React.FC<TBasketProductProps> = ({ price, title, img, index, count }) => {
+  const { removeOneFromBasketByIndex, removeFromBasketByIndex, addOneToBasketByIndex } = useBasket()
 
+  const handleDeleteOneProduct = (e, id) => {
+    e.preventDefault()
+    removeOneFromBasketByIndex(id)
+  }
+
+  const handleAddOneProduct = (e, id) => {
+    e.preventDefault()
+    addOneToBasketByIndex(id)
+  }
   const handleDeleteProduct = (e, id) => {
     e.preventDefault()
     removeFromBasketByIndex(id)
@@ -32,7 +42,7 @@ export const BasketProduct: React.FC<TBasketProductProps> = ({ price, title, img
           <div className={styles.productItem_footer}>
             <div className={styles.productItemActions_root}>
               <div className={styles.productItemActions_action}>
-                <div className={styles.icon}>
+                <div className={styles.icon} onClick={e => handleDeleteOneProduct(e, index)}>
                   <svg
                     width="16"
                     height="16"
@@ -49,9 +59,9 @@ export const BasketProduct: React.FC<TBasketProductProps> = ({ price, title, img
                   </svg>
                 </div>
               </div>
-              <span>1</span>
+              <span>{count}</span>
               <div className={styles.productItemActions_action}>
-                <div className={styles.icon}>
+                <div onClick={e => handleAddOneProduct(e, index)} className={styles.icon}>
                   <svg
                     width="16"
                     height="16"
@@ -69,7 +79,7 @@ export const BasketProduct: React.FC<TBasketProductProps> = ({ price, title, img
             </div>
             <div className={styles.productItemPrice_root}>
               <span>
-                <span>{price}&nbsp;₽</span>
+                <span>{parseInt(price, 10) * count}&nbsp;₽</span>
               </span>
             </div>
           </div>

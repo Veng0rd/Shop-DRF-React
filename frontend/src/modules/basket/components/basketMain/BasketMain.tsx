@@ -5,10 +5,10 @@ import { BasketProduct } from '../basketProduct/BasketProduct'
 import { useBasket } from '../../../../hooks/useBusket'
 
 export const BasketMain = () => {
-  const { basket } = useBasket()
+  const { basket, setBasket } = useBasket()
   const [address, setAddress] = useState('')
 
-  const price = basket.reduce((acc, item) => acc + parseInt(item.price, 10), 0)
+  const totalPrice = basket.reduce((acc, item) => acc + item.count * parseInt(item.price, 10), 0)
 
   useEffect(() => {
     const addressString = localStorage.getItem('address')
@@ -259,6 +259,7 @@ export const BasketMain = () => {
                 price={product.price}
                 title={product.title}
                 img={product.small_image}
+                count={product.count}
                 index={i}
               />
             ))}
@@ -268,14 +269,14 @@ export const BasketMain = () => {
             <div className={styles.OrderPrice_root}>
               <span className={styles.OrderPrice_title}></span>
               <span className={styles.OrderPrice_price}>
-                <span>{price}&nbsp;₽</span>
+                <span>{totalPrice}&nbsp;₽</span>
               </span>
             </div>
-            <div style={{ opacity: `${price >= 400 ? '1' : ''}` }} className={styles.basketButton_root}>
+            <div style={{ opacity: `${totalPrice >= 400 ? '1' : ''}` }} className={styles.basketButton_root}>
               <button
-                style={{ cursor: `${price >= 400 ? 'pointer' : null}` }}
+                style={{ cursor: `${totalPrice >= 400 ? 'pointer' : null}` }}
                 className={styles.basketButton}
-                disabled={price >= 400 ? false : true}>
+                disabled={totalPrice >= 400 ? false : true}>
                 <span className={styles.content}>
                   <span className={styles.center}>
                     <span>Заказ от&nbsp;400&nbsp;₽</span>

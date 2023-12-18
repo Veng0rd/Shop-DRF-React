@@ -9,7 +9,7 @@ type ProductCardProps = {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
-  const { basket, setBasket } = useBasket()
+  const { basket, dispatch } = useBasket()
 
   const navigate = useNavigate()
   const location = useLocation()
@@ -19,8 +19,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
 
   const handleAddProductToBasket = (e, obj) => {
     e.preventDefault()
-
-    setBasket(prev => [...prev, obj])
+    dispatch({ type: 'ADD_TO_BASKET', payload: obj })
   }
 
   return (
@@ -76,6 +75,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
                                 title: card.title,
                                 price: card.price,
                                 small_image: card.small_image,
+                                id: card.id,
                               })
                             }
                             className={styles.actionsContainer}>
