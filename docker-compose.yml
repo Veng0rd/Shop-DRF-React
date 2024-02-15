@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: backend-drf
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    ports:
+      - '8000:8000'
+    volumes:
+      - /backend:/backend
+    environment:
+      - DB_HOST=postgres_db
+      - DB_NAME=shop_db
+      - DB_USER=admin
+      - DB_PASSWORD=admin
+      - SOCIAL_AUTH_GOOGLE_OAUTH2_KEY=${SOCIAL_AUTH_GOOGLE_OAUTH2_KEY}
+      - SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET=${SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET}
+    command:
+      - sh
+      - -c
+      - |
+        python manage.py makemigrations
+        python manage.py migrate
+        python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - postgres_db
+
+  postgres_db:
+    image: postgres:16.0-alpine3.18
+    container_name: postgres_db
+    environment:
+      - POSTGRES_DB=shop_db
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
+    ports:
+      - '5432:5432'
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - '5050:80'
+
+  web-react:
+    container_name: web-react
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    ports:
+      - '5173:5173'
+    volumes:
+      - /frontend:/frontend
+    command: npm run dev -- --host
+
+volumes:
+  postgres_data:

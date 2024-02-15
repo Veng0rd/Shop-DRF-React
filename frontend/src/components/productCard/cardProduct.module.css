@@ -1,0 +1,215 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 24px 24px;
+  background-color: #fff;
+  border-radius: 0 0 32px 32px;
+  z-index: 2;
+}
+
+.productsName {
+  display: flex;
+  flex-flow: nowrap;
+  gap: 12px;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.productsBackBtn {
+  display: inline-flex;
+}
+
+.backBtn {
+  position: relative;
+  width: fit-content;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 40px;
+  overflow: hidden;
+  color: #404040;
+  background-color: #f2f2f2;
+  border: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.backBtn:hover {
+  background-color: #e0e0e0;
+}
+
+.btnContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.btnText {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.1px;
+  color: inherit;
+}
+
+.btnIcon {
+  position: relative;
+  height: 24px;
+  color: #404040;
+}
+
+.nameText {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: -0.6px;
+  color: #404040;
+}
+
+.productSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+  background-color: #fff;
+}
+
+.sectionHeader span {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: -0.6px;
+  color: #404040;
+}
+
+.productList {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-auto-rows: max-content;
+  grid-gap: 20px 8px;
+  gap: 20px 8px;
+  max-width: 100%;
+}
+
+.productCard {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+
+.cardImage {
+  position: relative;
+  padding-bottom: 100%;
+  overflow: hidden;
+  background-color: #f2f2f2;
+  border-radius: 18px;
+  -webkit-transform: translateZ(0);
+}
+
+.cardImage img {
+  position: absolute;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  height: 100%;
+  width: 100%;
+  inset: 0px;
+  color: transparent;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.cardDetails {
+  flex-grow: 1;
+}
+
+.cardName {
+  display: -webkit-box;
+  padding-top: 6px;
+  overflow: hidden;
+  line-height: 13px;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.cardName span {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: 0.02px;
+  color: #595959;
+}
+
+.cardActions {
+  margin-top: 6px;
+}
+
+.actionsContainer {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 7px 32px 7px 12px;
+  background-color: #f2f2f2;
+  user-select: none;
+  border-radius: 40px;
+  transition: background-color 0.15s ease-in, color 0.15s ease-in;
+}
+
+.actionsContainer:hover {
+  background-color: #e0e0e0;
+}
+
+.actionsText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.actionsText span {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.1px;
+  color: #00b207;
+}
+
+.actionsIcon {
+  position: absolute;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 100%;
+  cursor: pointer;
+}
+
+.icon {
+  position: relative;
+  height: 16px;
+}

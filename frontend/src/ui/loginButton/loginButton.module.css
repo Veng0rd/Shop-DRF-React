@@ -1,0 +1,18 @@
+.loginButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 14px 123px;
+  background-color: #fff;
+  border-radius: 100px;
+}
+
+.text {
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+
+  color: #000;
+}

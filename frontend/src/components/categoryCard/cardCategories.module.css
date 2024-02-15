@@ -1,0 +1,66 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 24px 24px;
+  background-color: #fff;
+  border-radius: 0 0 32px 32px;
+  z-index: 2;
+}
+
+.homePageContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.categoriesBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.categoriesBlock:not(:last-of-type) {
+  margin-bottom: 40px;
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-auto-rows: max-content;
+  grid-gap: 8px;
+  gap: 8px;
+  max-width: 100%;
+}
+
+.categoryCard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #f2f2f2;
+  border-radius: 14px;
+}
+
+.categoryTitle {
+  margin-bottom: 20px;
+
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: -0.6px;
+}
+
+.cardImage {
+  position: relative;
+  padding-bottom: 133%;
+}
+
+.cardText {
+  position: absolute;
+  top: 0;
+  padding: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 19px;
+  letter-spacing: -0.05px;
+  color: #404040;
+}

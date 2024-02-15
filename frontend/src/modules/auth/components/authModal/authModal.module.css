@@ -1,0 +1,160 @@
+.modal {
+  position: fixed;
+  background: #fff;
+  transition: all;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+  transform: translateZ(0) !important;
+  opacity: 1 !important;
+  z-index: 1300;
+  transition-duration: 300ms;
+  right: 0px;
+  width: 483px;
+  height: calc(100vh - 64px);
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 64px);
+  margin: 32px;
+  overflow: hidden;
+  border-radius: 32px;
+  transform: translate3d(100%, 0px, 0px);
+}
+
+.modalExit {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 10;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnClose {
+  display: inline-flex;
+  margin-left: auto;
+}
+
+.btnClose button {
+  position: relative;
+  overflow: hidden;
+  color: #404040;
+  cursor: pointer;
+  border: none;
+  border-radius: 40px;
+  background: hsla(0, 0%, 95%, 0.9);
+  backdrop-filter: blur(1px);
+
+  width: 36px;
+  height: 36px;
+  padding: 0 4px;
+  transition: background 0.2s ease-in-out;
+}
+
+.btnClose button:hover {
+  background: hsla(0, 0%, 85%, 1);
+}
+
+.btnContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.contentCenter span {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.1px;
+  color: inherit;
+}
+
+.btnIcon {
+  position: relative;
+  height: 24px;
+  color: #404040;
+}
+
+.LoginForm_root {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 16px;
+  justify-content: center;
+  max-width: 295px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.btnAuth {
+  position: relative;
+  width: 100%;
+  padding: 0 24px;
+  overflow: hidden;
+  color: #404040;
+  cursor: pointer;
+  background: #f2f2f2;
+  border: none;
+  max-width: 304px;
+  height: 56px;
+  border-radius: 56px;
+}
+
+.btnAuth__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnAuth__center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.btnAuth__center span {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  letter-spacing: -0.05px;
+  color: inherit;
+  font-family: Inter, sans-serif;
+}
+
+.LoginWizardOverlay_bottomLayout {
+  position: absolute;
+  right: 40px;
+  bottom: 48px;
+  left: 40px;
+}
+
+.LoginWizardOverlay_agreement span {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.1px;
+  font-family: Inter, sans-serif;
+  color: rgb(166, 166, 166);
+}
+
+.overlay {
+  display: block;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  opacity: 0.8;
+  background-color: #000000;
+  z-index: 102;
+}

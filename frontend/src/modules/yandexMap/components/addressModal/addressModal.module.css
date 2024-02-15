@@ -1,0 +1,261 @@
+.modal {
+  position: fixed;
+  background: #fff;
+  transition: all;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 64px);
+  overflow: hidden;
+  border-radius: 32px;
+  transform: translateZ(0) !important;
+  opacity: 1 !important;
+  margin: 32px;
+  height: calc(100vh - 40px);
+  width: 978px;
+  z-index: 1202;
+  transition-duration: 500ms;
+  right: 0px;
+  top: 0px;
+}
+
+.modalExit {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 10;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeBtn {
+  display: inline-flex;
+  margin-left: auto;
+}
+
+.closeBtn button {
+  position: relative;
+  overflow: hidden;
+  color: #404040;
+  width: 36px;
+  height: 36px;
+  padding: 0 4px;
+  background: hsla(0, 0%, 95%, 0.9);
+  backdrop-filter: blur(1px);
+  border-radius: 40px;
+  cursor: pointer;
+  border: none;
+  font-family: Inter, sans-serif;
+}
+
+.btnContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnContent span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.btnContent span span {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.1px;
+  font-family: Inter, sans-serif;
+  color: inherit;
+}
+
+.btnIcon {
+  position: relative;
+  height: 24px;
+  color: #404040;
+}
+
+.mainOverlay {
+  display: block;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  opacity: 0.8;
+  background-color: #000000;
+  z-index: 1201;
+}
+
+.hidden {
+  overflow: hidden;
+}
+
+.AddressCreation_root {
+  display: flex;
+  gap: 32px;
+  height: 100%;
+  padding: 12px;
+  overflow: hidden;
+}
+
+.AddressCreation_map {
+  position: relative;
+  flex-basis: 463px;
+}
+
+.MapContainer_container {
+  width: 100%;
+  height: 100%;
+  border-radius: 32px;
+}
+
+.AddressCreation_info {
+  position: relative;
+  display: flex;
+  flex: 1 1;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.AddressCreation_info::before {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: block;
+  height: 158px;
+  pointer-events: none;
+  content: '';
+  background: linear-gradient(180deg, hsla(0, 0%, 100%, 0) 0, var(--color-white) 87.24%);
+}
+
+.AddressCreation_text {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.3px;
+  font-family: Inter, sans-serif;
+  color: #404040;
+}
+
+.AddressSuggest_root {
+  padding: 0;
+  position: relative;
+}
+
+.Suggest_root {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.textInputContainer {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.textInputContainer span {
+  position: absolute;
+  top: -16px;
+  left: 0;
+  display: none;
+  color: #a6a6a6;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: 0.02px;
+  font-family: Inter, sans-serif;
+}
+
+.textInput {
+  padding-left: 22px;
+  text-align: left;
+  border-bottom: 1px solid transparent;
+  width: 100%;
+  margin: 0;
+  caret-color: #ff335f;
+  color: #404040;
+  border: none;
+  outline: transparent;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.32px;
+  font-family: Inter, sans-serif;
+}
+
+.textInput::placeholder {
+  color: #404040;
+}
+
+.inputIcon {
+  height: 16px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  color: #a6a6a6;
+  transform: translateY(-50%);
+}
+
+.inputCrossIcon {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 1;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-50%);
+  height: 16px;
+}
+
+.AddressCreation_button {
+  position: absolute;
+  bottom: 12px;
+  z-index: 10;
+  width: 100%;
+}
+
+.AddressCreation_button__control {
+  color: #fff;
+  background: #00b207;
+  height: 56px;
+  padding: 0 24px;
+  border-radius: 56px;
+  max-width: 100% !important;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+  font-family: Inter, sans-serif;
+}
+
+.AddressCreation_button__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.AddressCreation_button__center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.AddressCreation_button__text {
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  letter-spacing: -0.05px;
+  color: inherit;
+}
